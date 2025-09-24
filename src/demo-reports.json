@@ -1,6 +1,0 @@
-[
-  { "id": "demo-1", "lat": 28.6139, "lon": 77.2090, "disease": "Tomato Early blight", "confidence": 0.98, "risk": "High", "timestamp": "2025-09-24T10:00:00Z", "heatmap_url": "https://i.ibb.co/L50n11d/tomato-early-blight-heatmap.jpg" },
-  { "id": "demo-2", "lat": 19.0760, "lon": 72.8777, "disease": "Potato Late blight", "confidence": 0.95, "risk": "Medium", "timestamp": "2025-09-23T14:30:00Z", "heatmap_url": "https://i.ibb.co/c1z1NfP/potato-late-blight-heatmap.jpg" },
-  { "id": "demo-3", "lat": 12.9716, "lon": 77.5946, "disease": "Potato healthy", "confidence": 0.99, "risk": "Low", "timestamp": "2025-09-23T09:15:00Z", "heatmap_url": "https://i.ibb.co/GvxYmJq/potato-healthy.jpg" },
-  { "id": "demo-4", "lat": 22.5726, "lon": 88.3639, "disease": "Tomato Late blight", "confidence": 0.88, "risk": "Medium", "timestamp": "2025-09-22T18:00:00Z", "heatmap_url": "https://i.ibb.co/L50n11d/tomato-early-blight-heatmap.jpg" }
-]
