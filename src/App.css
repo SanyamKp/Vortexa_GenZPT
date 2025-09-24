@@ -1,0 +1,214 @@
+/* === UNIFIED STYLESHEET (COLLAPSIBLE SIDEBAR VERSION) === */
+
+/* 1. Homepage Styles */
+.homepage {
+  background: linear-gradient(135deg, #d8f3dc 0%, #74c69d 100%);
+  color: var(--primary-dark);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+.homepage-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px); }
+.logo { font-size: 1.5rem; font-weight: 600; }
+.homepage-nav a { margin-left: 30px; text-decoration: none; color: var(--primary-dark); font-weight: 500; transition: color 0.3s; }
+.homepage-nav a:hover { color: var(--accent-green); }
+.hero-section { text-align: center; padding: 80px 20px; }
+.hero-content { max-width: 800px; margin: 0 auto 50px auto; }
+.hero-content h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; }
+.hero-content p { font-size: 1.2rem; color: var(--accent-green); margin-bottom: 30px; }
+.get-started-btn {
+  background: var(--primary-green); color: white; padding: 15px 30px; border: none;
+  border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+  transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(27, 67, 50, 0.3);
+}
+.get-started-btn:hover { background: var(--accent-green); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(27, 67, 50, 0.4); }
+.feature-cards-container { display: flex; justify-content: center; gap: 30px; max-width: 1200px; margin: 0 auto; }
+.feature-card {
+  background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); padding: 30px;
+  border-radius: var(--border-radius); text-align: center; width: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.5); transition: all 0.3s ease;
+}
+.feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+.feature-card svg { color: var(--primary-green); margin-bottom: 15px; }
+.feature-card h3 { margin: 10px 0; font-size: 1.3rem; }
+.feature-card p { color: var(--text-light); }
+
+/* 2. Global Setup & Variables */
+:root {
+  --primary-dark: #081c15;
+  --primary-green: #1b4332;
+  --accent-green: #2d6a4f;
+  --light-green: #52b788;
+  --highlight-yellow: #ffc300;
+  --card-bg: #ffffff;
+  --text-dark: #212529;
+  --text-light: #6c757d;
+  --border-color: #e9ecef;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  --border-radius: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--text-dark);
+}
+
+/* 3. Tracker App Layout & Theme */
+.app-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, #e9f5db 0%, #d8f3dc 100%);
+  overflow-x: hidden; /* Prevent horizontal scroll during animation */
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* 4. Collapsible Sidebar Navigation */
+.app-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-green) 100%);
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.4s ease-in-out;
+  z-index: 100;
+}
+
+.app-sidebar.closed {
+  margin-left: -250px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.sidebar-header .icon { font-size: 2rem; }
+.sidebar-header h1 { margin: 0; font-size: 1.5rem; font-weight: 600; }
+
+.nav-button {
+  display: flex; align-items: center; gap: 15px; width: 100%;
+  padding: 15px; margin-bottom: 10px; background: transparent;
+  border: none; border-radius: 10px; color: rgba(255, 255, 255, 0.7);
+  cursor: pointer; font-size: 1rem; font-family: 'Poppins', sans-serif;
+  text-align: left; transition: all 0.3s ease;
+}
+.nav-button:hover { background: rgba(255, 255, 255, 0.1); }
+.nav-button.active { background: var(--light-green); color: var(--primary-dark); font-weight: 600; }
+.nav-button svg { width: 24px; height: 24px; }
+.nav-button span { transition: opacity 0.3s ease; }
+.app-sidebar.closed .nav-button span { opacity: 0; }
+
+/* 5. Main Content Wrapper & Sidebar Toggle */
+.main-content-wrapper {
+  flex-grow: 1;
+  position: relative;
+  transition: padding-left 0.4s ease-in-out;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 101;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.4s ease-in-out;
+}
+
+.sidebar-toggle.open {
+  left: calc(250px + 20px);
+  transform: rotate(180deg);
+}
+
+.hamburger-icon {
+  width: 24px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-icon span {
+  width: 100%;
+  height: 3px;
+  background: var(--primary-dark);
+  border-radius: 2px;
+}
+
+
+/* 6. Page Headers and Cards (Shared Styles) */
+.page-header { margin-bottom: 20px; }
+.page-header h2 { margin: 0; font-size: 2rem; font-weight: 700; }
+.page-header p { color: var(--text-light); font-size: 1.1rem; }
+.stat-card { background: var(--card-bg); padding: 20px; border-radius: var(--border-radius); box-shadow: var(--shadow); border-left: 5px solid var(--accent-green); }
+.stat-card .value { font-size: 2.2rem; font-weight: 700; color: var(--primary-dark); }
+.stat-card .label { color: var(--text-light); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
+
+/* 7. Dashboard Layout & Components */
+.dashboard-main-view { display: flex; gap: 20px; align-items: flex-start; }
+.map-card { flex-grow: 1; height: 740px; width: 100%; border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow); }
+.dashboard-right-column { flex: 0 0 450px; height: 740px; display: flex; flex-direction: column; gap: 20px; }
+.table-card { background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--shadow); height: 100%; overflow: hidden; display: flex; flex-direction: column; flex-grow: 1; }
+.reports-table-container { overflow-y: auto; height: 100%; }
+.reports-table { width: 100%; border-collapse: collapse; }
+.reports-table th, .reports-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+.reports-table th { background-color: #f8f9fa; font-weight: 600; color: var(--text-light); position: sticky; top: 0; }
+.reports-table tbody tr { cursor: pointer; transition: background-color 0.2s ease; }
+.reports-table tbody tr:hover { background-color: #f1f3f5; }
+.reports-table tbody tr.selected { background-color: var(--light-green) !important; color: var(--primary-dark); font-weight: 500; }
+.risk-pill { padding: 4px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; color: white; }
+.risk-pill.risk-high { background-color: #e5383b; }
+.risk-pill.risk-medium { background-color: #ffc300; color: #343a40; }
+.risk-pill.risk-low { background-color: #52b788; }
+.chart-card { background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 15px; flex-shrink: 0; height: 220px; }
+.chart-container { height: 100% !important; width: 100% !important; }
+
+/* 8. ATTRACTIVE ANALYSIS PAGE STYLES */
+.analysis-card-main { background: var(--card-bg); padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow); width: 100%; max-width: 900px; margin: 20px auto; min-height: 500px; display: flex; align-items: center; justify-content: center; flex-direction: column; animation: fadeInSlideUp 0.8s ease-out forwards; }
+.step-upload { text-align: center; cursor: pointer; border: 3px dashed var(--border-color); border-radius: var(--border-radius); padding: 60px; width: 100%; transition: all 0.3s ease; color: var(--text-light); }
+.step-upload:hover { border-color: var(--accent-green); background-color: #f8f9fa; transform: scale(1.02); }
+.step-upload h3 { margin: 10px 0; color: var(--text-dark); }
+.step-analyzing { text-align: center; }
+.step-analyzing h3 { margin-top: 20px; color: var(--primary-green); font-size: 1.5rem; }
+.step-analyzing p { color: var(--text-light); }
+.scanner-animation { position: relative; width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+.scanner-animation .leaf-icon { font-size: 100px; animation: pulse 2s infinite ease-in-out; }
+.scanner-animation .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, var(--light-green), transparent); box-shadow: 0 0 10px var(--light-green); animation: scan 2.5s infinite linear; }
+@keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
+.step-result { width: 100%; }
+.result-comparison { display: flex; gap: 20px; margin-bottom: 20px; }
+.image-container { flex: 1; text-align: center; }
+.image-container h4 { color: var(--text-light); font-weight: 500; }
+.image-container img { width: 100%; height: 250px; object-fit: cover; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.result-details-card { border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 20px; }
+.result-actions { display: flex; gap: 15px; margin-top: 20px; }
+.reset-button { flex: 1; padding: 15px; font-size: 1.1rem; font-weight: 600; color: var(--text-dark); background: var(--border-color); border: none; border-radius: 10px; cursor: pointer; transition: background-color 0.2s ease; }
+.reset-button:hover { background-color: #d3d3d3; }
+.submit-map-button {
+  flex: 2; width: 100%; padding: 15px; margin-top: 0; font-size: 1.1rem;
+  font-weight: 600; color: var(--primary-dark); background: var(--highlight-yellow);
+  border: none; border-radius: 10px; cursor: pointer; transition: all 0.2s ease;
+}
+.submit-map-button:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(255, 195, 0, 0.4); }
+.recommendations { margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color); }
+.recommendations h4 { margin-top: 0; color: var(--accent-green); }
+.recommendations ul { padding-left: 20px; margin: 0; color: var(--text-light); }
+.recommendations li { margin-bottom: 8px; }
