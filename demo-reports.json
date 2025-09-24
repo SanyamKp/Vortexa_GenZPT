@@ -1,0 +1,24 @@
+[
+  {
+    "id": "demo-1",
+    "disease": "Tomato___Early_blight",
+    "confidence": 0.98,
+    "risk_level": "High",
+    "image_url": "static/uploads/demo-1.jpg",
+    "heatmap_url": "static/heatmaps/demo-1_heatmap.png",
+    "lat": 18.5204,
+    "lon": 73.8567,
+    "timestamp": "2025-09-24T10:00:00Z"
+  },
+  {
+    "id": "demo-2",
+    "disease": "Potato___Late_blight",
+    "confidence": 0.95,
+    "risk_level": "Medium",
+    "image_url": "static/uploads/demo-2.jpg",
+    "heatmap_url": "static/heatmaps/demo-2_heatmap.png",
+    "lat": 18.6516,
+    "lon": 73.8123,
+    "timestamp": "2025-09-23T11:30:00Z"
+  }
+]
